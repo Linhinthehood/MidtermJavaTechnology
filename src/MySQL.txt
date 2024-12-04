@@ -1,0 +1,235 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Dec 04, 2024 at 10:07 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `swing_student_management`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `certificates`
+--
+
+CREATE TABLE `certificates` (
+  `certi_id` int(11) NOT NULL,
+  `certi_name` varchar(100) NOT NULL,
+  `certi_organization` varchar(100) NOT NULL,
+  `student_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `certificates`
+--
+
+INSERT INTO `certificates` (`certi_id`, `certi_name`, `certi_organization`, `student_id`) VALUES
+(70, 'Java Programming', 'Oracle', 1),
+(71, 'Data Structures', 'Coursera', 1),
+(72, 'Web Development', 'Udemy', 2),
+(73, 'JavaScript Mastery', 'Codecademy', 2),
+(74, 'Machine Learning', 'Stanford University', 3),
+(75, 'Python for AI', 'Google', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_histories`
+--
+
+CREATE TABLE `log_histories` (
+  `log_id` int(11) NOT NULL,
+  `log_type` varchar(6) NOT NULL CHECK (`log_type` in ('login','logout')),
+  `log_time` datetime NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `student_id` int(11) NOT NULL,
+  `student_name` varchar(30) NOT NULL,
+  `student_age` int(11) NOT NULL,
+  `student_major` varchar(30) NOT NULL,
+  `student_address` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`student_id`, `student_name`, `student_age`, `student_major`, `student_address`) VALUES
+(1, 'Alice Johnson', 20, 'Computer Science', '123 Maple Lane'),
+(2, 'Bob Johnson', 22, 'Computer Science', '123 Maple Lane'),
+(3, 'Charlie Smith', 21, 'Computer Science', '456 Oak Lane'),
+(4, 'Daisy Smith', 19, 'Mechanical Engineering', '456 Oak Lane'),
+(6, 'Ethan Brown', 23, 'Mechanical Engineering', '789 Pine Street'),
+(7, 'Fiona Brown', 18, 'Computer Science', '789 Pine Street'),
+(8, 'George Harris', 20, 'Electrical Engineering', '321 Birch Lane'),
+(9, 'Hannah Harris', 21, 'Electrical Engineering', '321 Birch Lane'),
+(10, 'Ian Clark', 19, 'Mathematics', '654 Cedar Lane'),
+(11, 'Jane Clark', 22, 'Mathematics', '654 Cedar Lane'),
+(12, 'Kevin Lewis', 21, 'Computer Science', '963 Elm Lane'),
+(13, 'Lily Lewis', 20, 'Physics', '963 Elm Lane'),
+(14, 'Michael Adams', 22, 'Physics', '135 Fir Lane'),
+(15, 'Nina Adams', 23, 'Physics', '135 Fir Lane'),
+(16, 'Oscar White', 18, 'Physics', '135 Fir Lane'),
+(17, 'Paula White', 19, 'Electrical Engineering', '456 Oak Lane'),
+(18, 'Quinn Scott', 21, 'Electrical Engineering', '963 Elm Lane'),
+(19, 'Rachel Scott', 20, 'Mechanical Engineering', '963 Elm Lane'),
+(20, 'Steven Hall', 22, 'Mechanical Engineering', '456 Oak Lane'),
+(21, 'Tina Hall', 23, 'Mathematics', '654 Cedar Lane'),
+(22, 'Uma Green', 19, 'Mathematics', '123 Maple Lane'),
+(23, 'Victor Green', 18, 'Mathematics', '123 Maple Lane'),
+(24, 'Wendy Carter', 20, 'Electrical Engineering', '321 Birch Lane'),
+(25, 'Xander Carter', 21, 'Electrical Engineering', '321 Birch Lane'),
+(26, 'Yvonne Harris', 23, 'Computer Science', '789 Pine Street'),
+(27, 'Zane Bell', 19, 'Computer Science', '789 Pine Street'),
+(28, 'Angela Morgan', 20, 'Physics', '963 Elm Lane'),
+(29, 'Brian Morgan', 18, 'Physics', '963 Elm Lane'),
+(30, 'Cathy Parker', 21, 'Computer Science', '123 Maple Lane'),
+(31, 'Daniel Parker', 22, 'Computer Science', '123 Maple Lane'),
+(32, 'Emily Rivera', 23, 'Mechanical Engineering', '456 Oak Lane'),
+(33, 'Frank Rivera', 19, 'Mathematics', '654 Cedar Lane'),
+(34, 'Grace Peterson', 20, 'Electrical Engineering', '321 Birch Lane'),
+(35, 'Henry Simmons', 22, 'Electrical Engineering', '321 Birch Lane'),
+(36, 'Isabel Flores', 18, 'Mathematics', '654 Cedar Lane'),
+(37, 'Jack Miller', 21, 'Mathematics', '123 Maple Lane'),
+(38, 'Kara Baker', 23, 'Computer Science', '123 Maple Lane'),
+(39, 'Liam Foster', 20, 'Physics', '963 Elm Lane'),
+(40, 'Mia Sanders', 19, 'Computer Science', '789 Pine Street'),
+(41, 'Nathan Brooks', 22, 'Mechanical Engineering', '456 Oak Lane'),
+(42, 'Olivia Ross', 18, 'Mechanical Engineering', '456 Oak Lane'),
+(43, 'Peter Bennett', 20, 'Mathematics', '654 Cedar Lane'),
+(44, 'Queena Howard', 23, 'Mathematics', '654 Cedar Lane'),
+(45, 'Ryan Turner', 19, 'Electrical Engineering', '321 Birch Lane'),
+(46, 'Sophia Ward', 22, 'Electrical Engineering', '321 Birch Lane'),
+(47, 'Thomas Hill', 18, 'Physics', '963 Elm Lane'),
+(48, 'Uma Patel', 21, 'Physics', '963 Elm Lane'),
+(49, 'Victor Long', 20, 'Mechanical Engineering', '456 Oak Lane'),
+(50, 'Wanda Clark', 23, 'Electrical Engineering', '321 Birch Lane');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(30) NOT NULL,
+  `user_age` int(11) NOT NULL,
+  `user_phone_no` varchar(15) NOT NULL,
+  `user_status` varchar(6) NOT NULL CHECK (`user_status` in ('normal','locked')),
+  `user_type` varchar(9) NOT NULL CHECK (`user_type` in ('admin','manager','employee')),
+  `user_profile` varchar(100) DEFAULT NULL,
+  `user_password` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_age`, `user_phone_no`, `user_status`, `user_type`, `user_profile`, `user_password`) VALUES
+(1, 'admin', 30, '1234567890', 'normal', 'admin', 'default_profile.jpg', '123'),
+(2, 'John Doe', 25, '0987654321', 'normal', 'manager', 'default_profile.jpg', 'john2024'),
+(3, 'Jane Smith', 28, '1122334455', 'locked', 'manager', 'default_profile.jpg', 'jane2024'),
+(4, 'Myat', 22, '1122334466', 'normal', 'employee', 'default_profile.jpg', 'myat2024');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `certificates`
+--
+ALTER TABLE `certificates`
+  ADD PRIMARY KEY (`certi_id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `log_histories`
+--
+ALTER TABLE `log_histories`
+  ADD PRIMARY KEY (`log_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`student_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `certificates`
+--
+ALTER TABLE `certificates`
+  MODIFY `certi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+
+--
+-- AUTO_INCREMENT for table `log_histories`
+--
+ALTER TABLE `log_histories`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `certificates`
+--
+ALTER TABLE `certificates`
+  ADD CONSTRAINT `certificates_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`);
+
+--
+-- Constraints for table `log_histories`
+--
+ALTER TABLE `log_histories`
+  ADD CONSTRAINT `log_histories_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
